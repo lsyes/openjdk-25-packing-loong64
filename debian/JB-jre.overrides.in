@@ -1,0 +1,9 @@
+# these are in the -jre-headless package, -jre depends on it
+@basename@-jre binary: desktop-command-not-in-package
+
+# keep symbols so that native memory tracking works
+# See https://bugs.launchpad.net/ubuntu/+source/openjdk-20/+bug/2012326
+@basename@-jre binary: unstripped-binary-or-object
+
+# repeated lib due to upstream implementation directory layout
+@basename@-jre binary: repeated-path-segment

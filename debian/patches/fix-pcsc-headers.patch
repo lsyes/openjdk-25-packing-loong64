@@ -1,0 +1,13 @@
+--- a/src/java.smartcardio/share/native/libj2pcsc/pcsc.c
++++ b/src/java.smartcardio/share/native/libj2pcsc/pcsc.c
+@@ -35,7 +35,11 @@
+ #include <string.h>
+ #include <assert.h>
+ 
++#ifdef __linux__
++#include <PCSC/winscard.h>
++#else
+ #include <winscard.h>
++#endif
+ 
+ // #define J2PCSC_DEBUG

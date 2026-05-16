@@ -1,0 +1,17 @@
+Description: Use IP address in tests
+ Ubuntu build machines are not set up for dns. Use IP addresses to get correct test
+ outcomes.
+Author: Vladimir Petko <vladimir.petko@canonical.com>
+Forwarded: not-needed
+Last-Update: 2023-03-27
+--- a/test/jdk/java/net/InetAddress/getOriginalHostName.java
++++ b/test/jdk/java/net/InetAddress/getOriginalHostName.java
+@@ -39,7 +39,7 @@ public class getOriginalHostName {
+         SharedSecrets.getJavaNetInetAddressAccess();
+ 
+     public static void main(String[] args) throws Exception {
+-        final String HOST = "dummyserver.java.net";
++        final String HOST = "localhost";
+         InetAddress ia = null;
+         ia = getInetAddress(HOST);
+         if (ia != null) testInetAddress(ia, HOST);

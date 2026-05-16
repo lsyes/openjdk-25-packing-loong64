@@ -1,0 +1,10 @@
+# keep symbols so that native memory tracking works
+# See https://bugs.launchpad.net/ubuntu/+source/openjdk-20/+bug/2012326
+openjdk-25-jre-zero binary: unstripped-binary-or-object
+
+# Upstream implementation
+openjdk-25-jre-zero binary: exit-in-shared-library
+openjdk-25-jre-zero binary: spelling-error-in-binary
+
+# repeated lib due to upstream implementation directory layout
+openjdk-25-jre-zero binary: repeated-path-segment

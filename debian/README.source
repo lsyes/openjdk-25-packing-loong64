@@ -1,0 +1,63 @@
+Content of source package
+=========================
+"openjdk-XX" is a composite source package:
+- OpenJDK source tarball:
+  https://github/openjdk/jdk<version>u
+- Google test source tarball
+  https://github.com/google/googletest
+- Debian packaging scripts and patches.
+
+Building a new OpenJDK-XX Debian package
+===================================================
+
+1.  Update version in d/changelog
+2.  Update git_tag variable in d/rules
+3.  Execute make -f debian/rules get-orig
+3a. Use watch file (uscan or uscan --download-current-version)
+    as an alternative to generate the source tarball.
+4.  Validate the build by building the package, installing it
+    and building again against the newly build package.
+
+Switching between early access and release builds
+===================================================
+1. Update version in d/changelog
+2. Update is_upstream_release to 'yes' for release builds
+3. Regenerate d/watch:
+
+   make -f debian/rules debian/watch
+
+
+Performing a backport
+===================================================
+1. Update version in d/changelog.
+2. Unpack source tarballs
+2. Regenerate packaging files for the appropriate version in
+   a chroot, e.g.,
+
+   schroot -c trixie-amd64
+   make -f debian/rules debian/control gen-autopkgtests
+
+3. Validate the build by building the package, installing it
+   and building again against the newly build package.
+
+Support for DEB_BUILD_OPTIONS
+=============================
+The current package's debian/rules support
+the standardized environment variable DEB_BUILD_OPTIONS. This variable can
+contain several flags to change how a package is compiled and built.
+
+  * nocheck:     don't run jtreg test suites.
+  * nodocs:      skip javadoc generation
+  * nostrip:     debugging symbols should not be stripped from the
+                 binary during installation
+  * parallel=X:  package should be built using up to X parallel processes
+  * nobootcycle: do not use OpenJDK bootcycle build, build the package
+                 against boot OpenJDK
+  * noaltzero:   don't build alternative Zero VM.
+  * terse:       reduce build output.
+
+Sample usage:
+
+  DEB_BUILD_OPTIONS="parallel=5 nocheck" dpkg-buildpackage -b"
+
+ Build with 5 parallel processes and don't run jtreg test suites.

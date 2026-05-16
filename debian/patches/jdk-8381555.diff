@@ -1,0 +1,29 @@
+From 81b6fcc3e9e6a5a53a7a53d8371d86a2f48f3d90 Mon Sep 17 00:00:00 2001
+From: Vladimir Petko <vpetko@openjdk.org>
+Date: Thu, 2 Apr 2026 13:12:48 +0000
+Subject: [PATCH] 8381555:
+ test/hotspot/jtreg/gc/arguments/TestG1CompressedOops.java fails on 32 bit
+ architectures
+Origin: https://github.com/openjdk/jdk/commit/81b6fcc3e9e6a5a53a7a53d8371d86a2f48f3d90
+Bug: https://bugs.openjdk.org/browse/JDK-8381555
+Reviewed-by: jsikstro
+
+---
+ test/hotspot/jtreg/gc/arguments/TestG1CompressedOops.java | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/test/hotspot/jtreg/gc/arguments/TestG1CompressedOops.java b/test/hotspot/jtreg/gc/arguments/TestG1CompressedOops.java
+index 3aec113990c..c4c1d364308 100644
+--- a/test/hotspot/jtreg/gc/arguments/TestG1CompressedOops.java
++++ b/test/hotspot/jtreg/gc/arguments/TestG1CompressedOops.java
+@@ -27,6 +27,7 @@
+ /*
+  * @test TestG1CompressedOops
+  * @bug 8354145
++ * @requires vm.bits == 64
+  * @requires vm.flagless
+  * @summary Verify that the flag UseCompressedOops is updated properly
+  * @library /test/lib
+-- 
+2.51.0
+

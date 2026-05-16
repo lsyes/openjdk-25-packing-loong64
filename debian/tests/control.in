@@ -1,0 +1,21 @@
+Test-Command: java --version
+Depends: @basename@-jre-headless
+Restrictions: allow-stderr, superficial
+
+Test-Command: javac --version
+Depends: @basename@-jdk-headless
+Restrictions: allow-stderr, superficial
+
+Tests: hotspot-autopkgtest.sh
+Depends: @, @jtreg_dep@, @testng_dep@, build-essential, bash, lsb-release, xfwm4, xvfb, xauth, dbus-daemon, libatk-wrapper-java, libatk-wrapper-java-jni
+Restrictions: allow-stderr, skippable, flaky, rw-build-tree
+Architecture: @jtreg_archs@
+
+Tests: jdk-autopkgtest.sh
+Depends: @, @jtreg_dep@, @testng_dep@, build-essential, bash, lsb-release, xfwm4, xvfb, xauth, dbus-daemon, libatk-wrapper-java, libatk-wrapper-java-jni
+Restrictions: allow-stderr, skippable, flaky, rw-build-tree
+Architecture: @jtreg_archs@
+
+Tests: dependencies.sh
+Depends: @basename@-jre-headless, build-essential, bash
+Restrictions: allow-stderr

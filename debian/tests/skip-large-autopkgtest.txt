@@ -1,0 +1,7 @@
+# The list of tier1 tests that require large amount of memory >=2G
+
+runtime/cds/NonJVMVariantLocation.java 0000000 generic-all
+runtime/jni/checked/TestLargeUTF8Length.java 0000000 generic-all
+java/foreign/TestLargeSegmentCopy.java 0000000 generic-all
+java/foreign/TestStringEncodingJumbo.java 0000000 generic-all
+java/util/HashMap/WhiteBoxResizeTest.java 0000000 generic-all

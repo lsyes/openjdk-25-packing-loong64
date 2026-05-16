@@ -1,0 +1,5 @@
+# Override due to upstream copyright
+@basename@-doc binary: spelling-error-in-copyright "GNU Public License" "GNU General Public License"
+
+# override warning for the old mailing address in upstream copyright
+@basename@-doc binary: old-fsf-address-in-copyright-file

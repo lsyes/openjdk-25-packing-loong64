@@ -1,0 +1,30 @@
+From 008d8d914cd4dd4573361390ee31120134338802 Mon Sep 17 00:00:00 2001
+From: Francesco Andreuzzi <fandreuzzi@openjdk.org>
+Date: Wed, 15 Oct 2025 09:17:49 +0000
+Subject: [PATCH] 8369817: [TESTBUG] EmptyPath::toString is ignored
+Origin: https://github.com/openjdk/jdk/commit/008d8d914cd4dd4573361390ee31120134338802
+Bug: https://bugs.openjdk.org/browse/JDK-8369817
+Reviewed-by: jpai, ayang
+
+---
+ test/jdk/java/io/File/EmptyPath.java | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/test/jdk/java/io/File/EmptyPath.java b/test/jdk/java/io/File/EmptyPath.java
+index 55c4af96fe3..374a69c7959 100644
+--- a/test/jdk/java/io/File/EmptyPath.java
++++ b/test/jdk/java/io/File/EmptyPath.java
+@@ -382,9 +382,8 @@ public void toPath() {
+     }
+ 
+     @Test
+-    public String toString() {
++    public void testToString() {
+         assertEquals(EMPTY_STRING, f.toString());
+-        return EMPTY_STRING;
+     }
+ 
+     @Test
+-- 
+2.51.0
+
