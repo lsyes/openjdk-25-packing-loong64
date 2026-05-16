@@ -1,5 +1,4 @@
 #!/bin/bash
-cd openjdk-25-packing-loong64
 
 git clone --depth 1 https://github.com/loongson/jdk25u.git ../jdk25u
 
